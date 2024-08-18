@@ -1,0 +1,2 @@
+	SYS_EXIT = 60
+	SYS_WRITE = 1
