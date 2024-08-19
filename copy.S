@@ -27,3 +27,20 @@ copy_null_loop:
 
 copy_null_done:
 	ret
+
+copy_eol:
+	xor rcx, rcx
+
+copy_eol_loop:
+	mov bl, [rsi + rcx]
+
+	cmp bl, 10
+	je  copy_eol_done
+
+	mov [rdi + rcx], bl
+	inc rcx
+
+	jmp copy_eol_loop
+
+copy_eol_done:
+	ret
