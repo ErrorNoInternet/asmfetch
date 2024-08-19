@@ -4,7 +4,7 @@ var_pretty_name: .ascii "PRETTY_NAME"
 .lcomm pretty_name, 65
 .lcomm pretty_name_length, 8
 
-.lcomm os_release_buf, 1024
+.lcomm os_release_buf, 512
 
 populate_release:
 	mov rax, SYS_OPEN
@@ -16,7 +16,7 @@ populate_release:
 	mov rdi, rax
 	mov rax, SYS_READ
 	mov rsi, offset os_release_buf
-	mov rdx, 1023
+	mov rdx, 511
 	syscall
 
 	mov  rax, offset os_release_buf
@@ -52,7 +52,7 @@ skip_var:
 	jne skip_var
 
 	inc r13
-    inc r8
+	inc r8
 	add r8, r9
 	xor r9, r9
 	jmp var_loop
