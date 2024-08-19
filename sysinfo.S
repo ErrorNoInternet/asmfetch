@@ -11,6 +11,7 @@ populate_sysinfo:
 
 	mov rax, sysinfo
 	mov rbx, 86400
+	xor rdx, rdx
 	div rbx
 	mov days, rax
 
