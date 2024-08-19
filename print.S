@@ -1,7 +1,7 @@
 .lcomm print_buf, 4096
 
 print_logo:
-	mov  rcx, LOGO_WIDTH
+	mov  rcx, LOGO_1 - LOGO_0
 	call print
 	ret
 
