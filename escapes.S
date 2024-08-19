@@ -10,5 +10,11 @@ yellow:
 blue:
 	.ascii "\x1b[34m"
 
+purple:
+	.ascii "\x1b[35m"
+
+cyan:
+	.ascii "\x1b[36m"
+
 reset:
 	.ascii "\x1b[m\xf"
