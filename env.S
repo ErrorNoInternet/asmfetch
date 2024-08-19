@@ -67,12 +67,12 @@ env_loop:
 	mov bl, [rax + r14]
 
 	cmp bl, [target + r9]
-	je  char_matched
+	je  env_char_matched
 
 	xor rsi, rsi
 
 	test bl, bl
-	je   check_zero
+	je   env_check_zero
 
 skip_env:
 	xor r13, r13
@@ -91,7 +91,7 @@ skip_env:
 	xor r9, r9
 	jmp env_loop
 
-char_matched:
+env_char_matched:
 	inc r9
 
 	inc rsi
@@ -107,7 +107,7 @@ char_matched:
 	call copy_null
 	ret
 
-check_zero:
+env_check_zero:
 	cmp r13, 1
 	jne skip_env
 	ret
