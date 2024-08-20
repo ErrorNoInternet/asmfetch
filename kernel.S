@@ -1,4 +1,4 @@
-kernel_label: .ascii "Kernel       "
+kernel_label: .ascii "Kernel    "
 
 print_kernel:
 	mov  rsi, offset kernel_symbol
@@ -10,7 +10,7 @@ print_kernel:
 	call print
 
 	mov  rsi, offset kernel_label
-	mov  rcx, 13
+	mov  rcx, 10
 	call print
 
 	mov  rsi, offset reset

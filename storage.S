@@ -1,4 +1,4 @@
-storage_label: .ascii "Storage (/)  "
+storage_label: .ascii "Storage   "
 
 .lcomm storage_number_buf, 10
 
@@ -12,7 +12,7 @@ print_storage:
 	call print
 
 	mov  rsi, offset storage_label
-	mov  rcx, 13
+	mov  rcx, 10
 	call print
 
 	mov  rsi, offset reset

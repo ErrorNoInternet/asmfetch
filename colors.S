@@ -1,4 +1,4 @@
-colors_label: .ascii "Colors       "
+colors_label: .ascii "Colors    "
 
 print_colors:
 	mov  rsi, offset colors_symbol
@@ -10,7 +10,7 @@ print_colors:
 	call print
 
 	mov  rsi, offset colors_label
-	mov  rcx, 13
+	mov  rcx, 10
 	call print
 
 	mov  rsi, offset reset

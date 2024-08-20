@@ -1,4 +1,4 @@
-desktop_label: .ascii "Desktop      "
+desktop_label: .ascii "Desktop   "
 
 print_desktop:
 	mov  rsi, offset desktop_symbol
@@ -10,7 +10,7 @@ print_desktop:
 	call print
 
 	mov  rsi, offset desktop_label
-	mov  rcx, 13
+	mov  rcx, 10
 	call print
 
 	mov  rsi, offset reset

@@ -1,4 +1,4 @@
-shell_label: .ascii "Shell        "
+shell_label: .ascii "Shell     "
 
 print_shell:
 	mov  rsi, offset shell_symbol
@@ -10,7 +10,7 @@ print_shell:
 	call print
 
 	mov  rsi, offset shell_label
-	mov  rcx, 13
+	mov  rcx, 10
 	call print
 
 	mov  rsi, offset reset

@@ -1,4 +1,4 @@
-system_label: .ascii "System       "
+system_label: .ascii "System    "
 
 print_system:
 	mov  rsi, offset system_symbol
@@ -10,7 +10,7 @@ print_system:
 	call print
 
 	mov  rsi, offset system_label
-	mov  rcx, 13
+	mov  rcx, 10
 	call print
 
 	mov  rsi, offset reset

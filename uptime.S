@@ -1,4 +1,4 @@
-uptime_label:   .ascii "Uptime       "
+uptime_label:   .ascii "Uptime    "
 days_label:     .ascii " days"
 day_label:      .ascii " day"
 hours_label:    .ascii " hours"
@@ -21,7 +21,7 @@ print_uptime:
 	call print
 
 	mov  rsi, offset uptime_label
-	mov  rcx, 13
+	mov  rcx, 10
 	call print
 
 	mov  rsi, offset reset

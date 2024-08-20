@@ -1,4 +1,4 @@
-memory_label: .ascii "Memory       "
+memory_label: .ascii "Memory    "
 
 .lcomm data_number_buf, 10
 
@@ -12,7 +12,7 @@ print_memory:
 	call print
 
 	mov  rsi, offset memory_label
-	mov  rcx, 13
+	mov  rcx, 10
 	call print
 
 	mov  rsi, offset reset
