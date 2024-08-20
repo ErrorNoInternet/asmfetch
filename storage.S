@@ -23,8 +23,8 @@ print_storage:
 	mov  rcx, 4
 	call print
 
-	mov  rax, fs_blocks
-	sub  rax, fs_bfree
+	mov  rax, [statfs_buf + 16]
+	sub  rax, [statfs_buf + 24]
 	mov  r8, rax
 	call print_storage_number
 
@@ -32,7 +32,7 @@ print_storage:
 	mov  rcx, 7
 	call print
 
-	mov  rax, fs_blocks
+	mov  rax, [statfs_buf + 16]
 	call print_storage_number
 
 	mov  rsi, offset data_number_label_1
@@ -45,7 +45,7 @@ print_storage:
 
 	mov  rax, r8
 	imul rax, 100
-	mov  rbx, fs_blocks
+	mov  rbx, [statfs_buf + 16]
 	xor  rdx, rdx
 	div  rbx
 	mov  rbx, 10
@@ -69,7 +69,7 @@ print_storage:
 	ret
 
 print_storage_number:
-	imul rax, fs_bsize
+	imul rax, [statfs_buf + 8]
 	imul rax, 1000
 	mov  rbx, 1024 * 1024 * 1024
 	xor  rdx, rdx
