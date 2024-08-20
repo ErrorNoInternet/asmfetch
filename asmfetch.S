@@ -23,6 +23,7 @@
 .include "system.S"
 .include "uptime.S"
 
+# customization
 .include "kernel/without_machine.S"
 .include "logo/fedora.S"
 .include "shell/path.S"
