@@ -16,6 +16,6 @@ $ ./asmfetch
 
 ## Customization
 
-It wasn't designed to be very customizable; tons of things are hardcoded, but
-you can tweak one or two things (including the logo) by modifying the includes
-in `asmfetch.S` and symbols in `symbols.S`.
+It wasn't designed to be very customizable or dynamic; tons of things are
+hardcoded, but you can tweak one or two things (including the logo) by
+modifying the includes in `asmfetch.S` and symbols in `symbols.S`.
