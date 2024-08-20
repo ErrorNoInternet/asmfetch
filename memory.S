@@ -79,8 +79,8 @@ print_memory_number:
 
 	add  rsi, offset data_number_buf
 	sub  rcx, 3
-	test rcx, rcx
-	je   print_memory_zero
+	cmp  rcx, 1
+	jl   print_memory_zero
 	call print
 
 print_memory_decimal:

@@ -70,7 +70,7 @@ print_storage:
 
 print_storage_number:
 	imul rax, fs_bsize
-    imul rax, 1000
+	imul rax, 1000
 	mov  rbx, 1024 * 1024 * 1024
 	xor  rdx, rdx
 	div  rbx
@@ -80,8 +80,8 @@ print_storage_number:
 
 	add  rsi, offset storage_number_buf
 	sub  rcx, 3
-	test rcx, rcx
-	je   print_storage_zero
+	cmp  rcx, 1
+	jl   print_storage_zero
 	call print
 
 print_storage_decimal:
