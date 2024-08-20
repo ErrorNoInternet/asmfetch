@@ -9,6 +9,6 @@
 
 	open_paren_label:       .ascii " ("
 	close_paren_label:      .ascii ")\n"
-	data_number_label_0:    .ascii " GiB / "
-	data_number_label_1:    .ascii " GiB ("
-	data_number_label_2:    .ascii ")\n"
+	size_label_0:           .ascii " GiB / "
+	size_label_1:           .ascii " GiB ("
+	size_label_2:           .ascii ")\n"

@@ -24,14 +24,14 @@ print_storage:
 	mov  r8, rax
 	call print_storage_number
 
-	mov  rsi, offset data_number_label_0
+	mov  rsi, offset size_label_0
 	mov  rcx, 7
 	call print
 
 	mov  rax, [statfs_buf + 16]
 	call print_storage_number
 
-	mov  rsi, offset data_number_label_1
+	mov  rsi, offset size_label_1
 	mov  rcx, 6
 	call print
 
@@ -58,7 +58,7 @@ print_storage:
 	mov  rcx, 4
 	call print
 
-	mov  rsi, offset data_number_label_2
+	mov  rsi, offset size_label_2
 	mov  rcx, 2
 	call print
 
