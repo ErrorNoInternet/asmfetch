@@ -3,14 +3,14 @@
 .lcomm hours, 8
 .lcomm minutes, 8
 
-.lcomm sysinfo, 128
+.lcomm sysinfo_buf, 128
 
 populate_sysinfo:
 	mov rax, SYS_SYSINFO
-	mov rdi, offset sysinfo
+	mov rdi, offset sysinfo_buf
 	syscall
 
-	mov rax, sysinfo
+	mov rax, sysinfo_buf
 	mov rbx, 86400
 	xor rdx, rdx
 	div rbx
@@ -28,7 +28,7 @@ populate_sysinfo:
 	div rbx
 	mov minutes, rax
 
-	mov rax, [sysinfo + 32]
+	mov rax, [sysinfo_buf + 32]
 	mov rbx, 1024
 	xor rdx, rdx
 	div rbx
