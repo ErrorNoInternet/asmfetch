@@ -37,8 +37,13 @@ print_known_desktop:
 	mov  rcx, 2
 	call print
 
-	mov  bl, [session]
-	sub  bl, 32
+	mov bl, [session]
+	cmp bl, 116
+	je  print_session
+
+	sub bl, 32
+
+print_session:
 	mov  [session], bl
 	mov  rsi, offset session
 	mov  rcx, session_length
