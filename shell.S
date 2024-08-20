@@ -5,6 +5,10 @@ print_shell:
 	mov  rcx, 5
 	call print
 
+	mov  rsi, offset blue
+	mov  rcx, 5
+	call print
+
 	mov  rsi, offset shell_label
 	mov  rcx, 13
 	call print

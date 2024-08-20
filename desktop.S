@@ -5,6 +5,10 @@ print_desktop:
 	mov  rcx, 5
 	call print
 
+	mov  rsi, offset blue
+	mov  rcx, 5
+	call print
+
 	mov  rsi, offset desktop_label
 	mov  rcx, 13
 	call print

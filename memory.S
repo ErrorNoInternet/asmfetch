@@ -7,6 +7,10 @@ print_memory:
 	mov  rcx, 6
 	call print
 
+	mov  rsi, offset blue
+	mov  rcx, 5
+	call print
+
 	mov  rsi, offset memory_label
 	mov  rcx, 13
 	call print
