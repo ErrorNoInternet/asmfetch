@@ -1,4 +1,5 @@
 desktop_label: .ascii "Desktop   "
+unknown_desktop_label: .ascii "Unknown"
 
 print_desktop:
 	mov  rsi, offset desktop_symbol
@@ -17,8 +18,19 @@ print_desktop:
 	mov  rcx, 8
 	call print
 
-	mov  rsi, offset desktop
-	mov  rcx, desktop_length
+	mov  bl, [desktop]
+	test bl, bl
+	je   print_unknown_desktop
+
+	mov rsi, offset desktop
+	mov rcx, desktop_length
+	jmp print_known_desktop
+
+print_unknown_desktop:
+	mov rsi, offset unknown_desktop_label
+	mov rcx, 7
+
+print_known_desktop:
 	call print
 
 	mov  rsi, offset open_paren_label
