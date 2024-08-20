@@ -1,3 +1,4 @@
+.lcomm memtotal, 8
 .lcomm days, 8
 .lcomm hours, 8
 .lcomm minutes, 8
@@ -26,5 +27,11 @@ populate_sysinfo:
 	mov rbx, 60
 	div rbx
 	mov minutes, rax
+
+	mov rax, [sysinfo + 32]
+	mov rbx, 1024
+	xor rdx, rdx
+	div rbx
+	mov memtotal, rax
 
 	ret
