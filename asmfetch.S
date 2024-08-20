@@ -5,7 +5,6 @@
 .include "copy.S"
 .include "escapes.S"
 .include "itoa.S"
-.include "logo.S"
 .include "print.S"
 .include "symbols.S"
 
@@ -26,6 +25,8 @@
 .include "system.S"
 .include "uptime.S"
 
+.include "logos/fedora.S"
+
 .global _start
 
 _start:
@@ -38,39 +39,48 @@ _start:
 	call populate_statfs
 
 	mov  rsi, offset LOGO_0
-	call print_logo
+	mov  rcx, LOGO_1 - LOGO_0
+	call print
 	call print_host
 
 	mov  rsi, offset LOGO_1
-	call print_logo
+	mov  rcx, LOGO_2 - LOGO_1
+	call print
 	call print_system
 
 	mov  rsi, offset LOGO_2
-	call print_logo
+	mov  rcx, LOGO_3 - LOGO_2
+	call print
 	call print_kernel
 
 	mov  rsi, offset LOGO_3
-	call print_logo
+	mov  rcx, LOGO_4 - LOGO_3
+	call print
 	call print_shell
 
 	mov  rsi, offset LOGO_4
-	call print_logo
+	mov  rcx, LOGO_5 - LOGO_4
+	call print
 	call print_uptime
 
 	mov  rsi, offset LOGO_5
-	call print_logo
+	mov  rcx, LOGO_6 - LOGO_5
+	call print
 	call print_desktop
 
 	mov  rsi, offset LOGO_6
-	call print_logo
+	mov  rcx, LOGO_7 - LOGO_6
+	call print
 	call print_memory
 
 	mov  rsi, offset LOGO_7
-	call print_logo
+	mov  rcx, LOGO_8 - LOGO_7
+	call print
 	call print_storage
 
 	mov  rsi, offset LOGO_8
-	call print_logo
+	mov  rcx, LOGO_END - LOGO_8
+	call print
 	call print_colors
 
 	mov  rsi, offset reset
