@@ -34,7 +34,7 @@ copy_eol:
 copy_eol_loop:
 	mov bl, [rsi + rcx]
 
-	cmp bl, 10
+	cmp bl, '\n'
 	je  copy_eol_done
 
 	mov [rdi + rcx], bl

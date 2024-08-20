@@ -11,7 +11,7 @@ print_host:
 	mov  rcx, 5
 	call print
 
-	mov  bl, 64
+	mov  bl, '@'
 	call printc
 
 	mov  rsi, offset green

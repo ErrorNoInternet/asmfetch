@@ -51,7 +51,7 @@ print_memory:
 	add  rsi, offset data_number_buf
 	call print
 
-	mov  bl, 37
+	mov  bl, '%'
 	call printc
 
 	mov  rsi, offset reset
@@ -80,7 +80,7 @@ print_memory_number:
 	call print
 
 print_memory_decimal:
-	mov  bl, 46
+	mov  bl, '.'
 	call printc
 
 	mov  rcx, 2
@@ -89,6 +89,6 @@ print_memory_decimal:
 	ret
 
 print_memory_zero:
-	mov  bl, 48
+	mov  bl, '0'
 	call printc
 	jmp  print_memory_decimal

@@ -45,7 +45,7 @@ uptime_minutes:
 	jne  print_minutes
 
 uptime_done:
-	mov  bl, 10
+	mov  bl, '\n'
 	call printc
 	ret
 

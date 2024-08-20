@@ -9,10 +9,10 @@ atoi_convert:
 	test rdi, rdi
 	je   done
 
-	cmp rdi, 48
+	cmp rdi, '0'
 	jl  error
 
-	sub  rdi, 48
+	sub  rdi, '0'
 	imul rax, 10
 	add  rax, rdi
 
