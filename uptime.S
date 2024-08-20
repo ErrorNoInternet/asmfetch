@@ -24,12 +24,8 @@ print_uptime:
 	mov  rcx, 10
 	call print
 
-	mov  rsi, offset reset
-	mov  rcx, 4
-	call print
-
 	mov  rsi, offset separator_symbol
-	mov  rcx, 4
+	mov  rcx, 8
 	call print
 
 	xor r9, r9

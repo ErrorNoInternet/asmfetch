@@ -15,12 +15,8 @@ print_storage:
 	mov  rcx, 10
 	call print
 
-	mov  rsi, offset reset
-	mov  rcx, 4
-	call print
-
 	mov  rsi, offset separator_symbol
-	mov  rcx, 4
+	mov  rcx, 8
 	call print
 
 	mov  rax, [statfs_buf + 16]

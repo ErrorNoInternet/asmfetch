@@ -23,7 +23,7 @@ colors_symbol:
 	.ascii "  "
 
 separator_symbol:
-	.ascii " "
+	.ascii "\x1b[m\xf "
 
 circle_symbol:
 	.ascii "  "
