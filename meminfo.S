@@ -32,12 +32,7 @@ meminfo_available:
 	cmp r9, 2
 	jne meminfo_available
 
-meminfo_available_skip_colon:
-	mov bl, [meminfo_buf + r8]
-	inc r8
-
-	cmp bl, 58
-	jne meminfo_available_skip_colon
+	add r8, 13
 
 meminfo_available_skip_space:
 	mov bl, [meminfo_buf + r8]
