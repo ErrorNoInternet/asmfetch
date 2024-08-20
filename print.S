@@ -1,4 +1,4 @@
-.lcomm print_buf, 4096
+.lcomm print_buf, 1024
 
 print:
 	mov bl, [rsi]
@@ -7,9 +7,8 @@ print:
 	mov [print_buf + r10], bl
 	inc r10
 
-	dec  rcx
-	test rcx, rcx
-	jne  print
+	dec rcx
+	jnz print
 
 	ret
 
@@ -20,9 +19,8 @@ println:
 	mov [print_buf + r10], bl
 	inc r10
 
-	dec  rcx
-	test rcx, rcx
-	jne  println
+	dec rcx
+	jnz println
 
 	mov bl, 10
 	mov [print_buf + r10], bl
