@@ -10,7 +10,7 @@ Please report any bugs you find.
 ## Usage
 
 ```
-$ gcc -nostdlib asmfetch.S -o asmfetch
+$ gcc -nostdlib -no-pie asmfetch.S -o asmfetch
 $ ./asmfetch
 ```
 
