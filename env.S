@@ -58,8 +58,6 @@ parse_env:
 	xor  r9, r9
 	xor  r13, r13
 	xor  rsi, rsi
-	call env_loop
-	ret
 
 env_loop:
 	mov r14, r8
