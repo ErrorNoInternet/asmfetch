@@ -20,7 +20,7 @@ populate_meminfo:
 
 	xor r8, r8
 	xor r9, r9
-	xor r10, r10
+	xor r11, r11
 
 meminfo_available:
 	mov bl, [meminfo_buf + r8]
@@ -42,8 +42,8 @@ meminfo_available_skip_space:
 	je  meminfo_available_skip_space
 
 meminfo_available_parse:
-	mov [memavailable_buf + r10], bl
-	inc r10
+	mov [memavailable_buf + r11], bl
+	inc r11
 
 	mov bl, [meminfo_buf + r8]
 	inc r8
