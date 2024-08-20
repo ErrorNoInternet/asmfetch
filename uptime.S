@@ -83,13 +83,14 @@ print_hour_label:
 print_hours:
 	test r9, r9
 	je   print_hours_
-	inc  r9
 
 	mov  rsi, offset comma_label
 	mov  rcx, 2
 	call print
 
 print_hours_:
+	inc r9
+
 	mov  rdi, offset hours_str
 	mov  rbx, 10
 	mov  r8, rax
@@ -115,7 +116,6 @@ print_minute_label:
 print_minutes:
 	test r9, r9
 	je   print_minutes_
-	inc  r9
 
 	mov  rsi, offset comma_label
 	mov  rcx, 2
