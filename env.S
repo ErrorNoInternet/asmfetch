@@ -17,13 +17,13 @@ env_session:    .ascii "XDG_SESSION_TYPE"
 
 .lcomm target, 65
 
-populate_envs:
+parse_envs:
 	mov  rcx, 4
 	mov  rsi, offset env_username
 	mov  rdi, offset target
 	call copy_count
 	mov  rdi, offset username
-	call populate_env
+	call parse_env
 	mov  username_length, rcx
 
 	mov  rcx, 5
@@ -31,7 +31,7 @@ populate_envs:
 	mov  rdi, offset target
 	call copy_count
 	mov  rdi, offset shell_path
-	call populate_env
+	call parse_env
 	mov  shell_path_length, rcx
 
 	mov  rcx, 19
@@ -39,7 +39,7 @@ populate_envs:
 	mov  rdi, offset target
 	call copy_count
 	mov  rdi, offset desktop
-	call populate_env
+	call parse_env
 	mov  desktop_length, rcx
 
 	mov  rcx, 16
@@ -47,12 +47,12 @@ populate_envs:
 	mov  rdi, offset target
 	call copy_count
 	mov  rdi, offset session
-	call populate_env
+	call parse_env
 	mov  session_length, rcx
 
 	ret
 
-populate_env:
+parse_env:
 	mov  rax, r15
 	xor  r8, r8
 	xor  r9, r9

@@ -1,7 +1,5 @@
 memory_label: .ascii "Memory    "
 
-.lcomm data_number_buf, 10
-
 print_memory:
 	mov  rsi, offset memory_symbol
 	mov  rcx, 6
@@ -45,10 +43,10 @@ print_memory:
 	xor  rdx, rdx
 	div  rbx
 	mov  rbx, 10
-	mov  rdi, offset data_number_buf
+	mov  rdi, offset number_buf
 	call itoa
 
-	add  rsi, offset data_number_buf
+	add  rsi, offset number_buf
 	call print
 
 	mov  bl, '%'
@@ -70,10 +68,10 @@ print_memory_number:
 	xor  rdx, rdx
 	div  rbx
 	mov  rbx, 10
-	mov  rdi, offset data_number_buf
+	mov  rdi, offset number_buf
 	call itoa
 
-	add  rsi, offset data_number_buf
+	add  rsi, offset number_buf
 	sub  rcx, 3
 	cmp  rcx, 1
 	jl   print_memory_zero

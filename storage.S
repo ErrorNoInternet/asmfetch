@@ -1,7 +1,5 @@
 storage_label: .ascii "Storage   "
 
-.lcomm storage_number_buf, 10
-
 print_storage:
 	mov  rsi, offset storage_symbol
 	mov  rcx, 6
@@ -45,10 +43,10 @@ print_storage:
 	xor  rdx, rdx
 	div  rbx
 	mov  rbx, 10
-	mov  rdi, offset data_number_buf
+	mov  rdi, offset number_buf
 	call itoa
 
-	add  rsi, offset data_number_buf
+	add  rsi, offset number_buf
 	call print
 
 	mov  bl, '%'
@@ -71,10 +69,10 @@ print_storage_number:
 	xor  rdx, rdx
 	div  rbx
 	mov  rbx, 10
-	mov  rdi, offset storage_number_buf
+	mov  rdi, offset number_buf
 	call itoa
 
-	add  rsi, offset storage_number_buf
+	add  rsi, offset number_buf
 	sub  rcx, 3
 	cmp  rcx, 1
 	jl   print_storage_zero

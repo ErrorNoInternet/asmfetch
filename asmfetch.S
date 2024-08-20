@@ -1,5 +1,7 @@
 .intel_syntax noprefix
 
+.lcomm number_buf, 10
+
 .include "atoi.S"
 .include "constants.S"
 .include "copy.S"
@@ -32,12 +34,12 @@
 
 _start:
 	mov  r15, [rsp + 32]
-	call populate_envs
-	call populate_release
-	call populate_sysinfo
-	call populate_utsname
-	call populate_meminfo
-	call populate_statfs
+	call parse_envs
+	call parse_release
+	call sysinfo
+	call uname
+	call parse_meminfo
+	call statfs
 
 	mov  rsi, offset LOGO_0
 	mov  rcx, LOGO_1 - LOGO_0

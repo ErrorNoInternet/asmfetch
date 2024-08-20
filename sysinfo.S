@@ -5,7 +5,7 @@
 
 .lcomm sysinfo_buf, 128
 
-populate_sysinfo:
+sysinfo:
 	mov rax, SYS_SYSINFO
 	mov rdi, offset sysinfo_buf
 	syscall

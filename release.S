@@ -6,7 +6,7 @@ var_pretty_name: .ascii "PRETTY_NAME"
 
 .lcomm os_release_buf, 512
 
-populate_release:
+parse_release:
 	mov rax, SYS_OPEN
 	mov rdi, offset os_release_file
 	xor rsi, rsi

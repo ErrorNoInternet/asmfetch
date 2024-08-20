@@ -2,10 +2,9 @@ meminfo_file: .asciz "/proc/meminfo"
 
 .lcomm memavailable, 8
 
-.lcomm memavailable_buf, 10
 .lcomm meminfo_buf, 128
 
-populate_meminfo:
+parse_meminfo:
 	mov rax, SYS_OPEN
 	mov rdi, offset meminfo_file
 	xor rsi, rsi
@@ -42,7 +41,7 @@ meminfo_available_skip_space:
 	je  meminfo_available_skip_space
 
 meminfo_available_parse:
-	mov [memavailable_buf + r11], bl
+	mov [number_buf + r11], bl
 	inc r11
 
 	mov bl, [meminfo_buf + r8]
@@ -54,7 +53,7 @@ meminfo_available_parse:
 	jmp meminfo_available_parse
 
 meminfo_done:
-	mov  rsi, offset memavailable_buf
+	mov  rsi, offset number_buf
 	call atoi
 	mov  memavailable, rax
 

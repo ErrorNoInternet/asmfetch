@@ -12,7 +12,7 @@
 
 .lcomm utsname, UTSNAME_SIZE * 6
 
-populate_utsname:
+uname:
 	mov rax, SYS_UNAME
 	mov rdi, offset utsname
 	syscall
