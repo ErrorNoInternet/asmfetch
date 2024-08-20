@@ -12,7 +12,7 @@ itoa_loop:
 itoa_convert:
 	xor rdx, rdx
 	div rbx
-	add rdx, 48
+	add rdx, '0'
 	dec rsi
 	mov [rdi + rsi], dl
 	jmp itoa_loop

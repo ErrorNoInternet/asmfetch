@@ -22,7 +22,7 @@ println:
 	dec rcx
 	jnz println
 
-	mov bl, 10
+	mov bl, '\n'
 	mov [print_buf + r10], bl
 	inc r10
 

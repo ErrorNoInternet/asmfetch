@@ -37,7 +37,7 @@ var_loop:
 
 	xor rsi, rsi
 
-	cmp bl, 10
+	cmp bl, '\n'
 	je  var_check_zero
 
 skip_var:
@@ -48,7 +48,7 @@ skip_var:
 	add r14, r9
 	mov bl, [rax + r14]
 
-	cmp bl, 10
+	cmp bl, '\n'
 	jne skip_var
 
 	inc r13

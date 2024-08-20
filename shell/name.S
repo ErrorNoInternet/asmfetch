@@ -25,7 +25,7 @@ rstrip:
 	inc rcx
 	dec rsi
 	mov bl, [rsi]
-	cmp bl, 47
+	cmp bl, '/'
 	jne rstrip
 
 	inc  rsi

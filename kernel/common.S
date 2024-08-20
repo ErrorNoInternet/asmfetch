@@ -21,5 +21,5 @@ print_kernel:
 	mov  rcx, sysname_length
 	call print
 
-	mov  bl, 32
+	mov  bl, ' '
 	call printc

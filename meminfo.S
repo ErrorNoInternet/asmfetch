@@ -25,7 +25,7 @@ populate_meminfo:
 meminfo_available:
 	mov bl, [meminfo_buf + r8]
 	inc r8
-	cmp bl, 10
+	cmp bl, '\n'
 	jne meminfo_available
 
 	inc r9
@@ -38,7 +38,7 @@ meminfo_available_skip_space:
 	mov bl, [meminfo_buf + r8]
 	inc r8
 
-	cmp bl, 32
+	cmp bl, ' '
 	je  meminfo_available_skip_space
 
 meminfo_available_parse:
@@ -48,7 +48,7 @@ meminfo_available_parse:
 	mov bl, [meminfo_buf + r8]
 	inc r8
 
-	cmp bl, 32
+	cmp bl, ' '
 	je  meminfo_done
 
 	jmp meminfo_available_parse

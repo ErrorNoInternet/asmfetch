@@ -38,7 +38,7 @@ print_known_desktop:
 	call print
 
 	mov bl, [session]
-	cmp bl, 116
+	cmp bl, 't'
 	je  print_session
 
 	sub bl, 32

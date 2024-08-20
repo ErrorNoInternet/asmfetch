@@ -51,7 +51,7 @@ print_storage:
 	add  rsi, offset data_number_buf
 	call print
 
-	mov  bl, 37
+	mov  bl, '%'
 	call printc
 
 	mov  rsi, offset reset
@@ -81,7 +81,7 @@ print_storage_number:
 	call print
 
 print_storage_decimal:
-	mov  bl, 46
+	mov  bl, '.'
 	call printc
 
 	mov  rcx, 2
@@ -90,6 +90,6 @@ print_storage_decimal:
 	ret
 
 print_storage_zero:
-	mov  bl, 48
+	mov  bl, '0'
 	call printc
 	jmp  print_storage_decimal
