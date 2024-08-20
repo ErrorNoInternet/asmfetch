@@ -11,13 +11,13 @@ uptime_symbol:
 	.ascii "  "
 
 desktop_symbol:
-	.ascii "  "
+	.ascii "  "
 
 memory_symbol:
-    .ascii "󰍛  "
+	.ascii "󰍛  "
 
 storage_symbol:
-    .ascii "󱥎  "
+	.ascii "󱥎  "
 
 colors_symbol:
 	.ascii "  "
