@@ -74,20 +74,17 @@ env_loop:
 	test bl, bl
 	je   env_check_zero
 
-skip_env:
 	xor r13, r13
-	inc r9
 
-	mov r14, r8
-	add r14, r9
-	mov bl, [rax + r14]
+skip_env:
+	inc r8
+	mov bl, [rax + r8]
 
 	test bl, bl
 	jne  skip_env
 
 	inc r13
 	inc r8
-	add r8, r9
 	xor r9, r9
 	jmp env_loop
 
