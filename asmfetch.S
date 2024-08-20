@@ -18,13 +18,13 @@
 .include "colors.S"
 .include "desktop.S"
 .include "host.S"
-.include "kernel.S"
 .include "memory.S"
 .include "shell.S"
 .include "storage.S"
 .include "system.S"
 .include "uptime.S"
 
+.include "kernel/without_machine.S"
 .include "logos/fedora.S"
 
 .global _start
