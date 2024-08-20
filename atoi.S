@@ -11,8 +11,6 @@ atoi_convert:
 
 	cmp rdi, 48
 	jl  error
-	cmp rdi, 57
-	jg  error
 
 	sub  rdi, 48
 	imul rax, 10
