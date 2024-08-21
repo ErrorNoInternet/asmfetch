@@ -16,7 +16,7 @@
 .include "sysinfo.S"
 .include "uname.S"
 
-.include "colors.S"
+.include "circles.S"
 .include "desktop.S"
 .include "host.S"
 .include "memory.S"
@@ -25,7 +25,7 @@
 .include "uptime.S"
 
 # customization
-.include "escapes/default.S"
+.include "colors/default.S"
 .include "kernel/without_machine.S"
 .include "logo/fedora.S"
 .include "shell/path.S"
