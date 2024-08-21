@@ -23,7 +23,7 @@ parse_envs:
 	mov  rdi, offset target
 	call copy_count
 	mov  rdi, offset username
-	call parse_env
+	call find_env_var
 	mov  username_length, rcx
 
 	mov  rcx, 5
@@ -31,7 +31,7 @@ parse_envs:
 	mov  rdi, offset target
 	call copy_count
 	mov  rdi, offset shell_path
-	call parse_env
+	call find_env_var
 	mov  shell_path_length, rcx
 
 	mov  rcx, 19
@@ -39,7 +39,7 @@ parse_envs:
 	mov  rdi, offset target
 	call copy_count
 	mov  rdi, offset desktop
-	call parse_env
+	call find_env_var
 	mov  desktop_length, rcx
 
 	mov  rcx, 16
@@ -47,62 +47,41 @@ parse_envs:
 	mov  rdi, offset target
 	call copy_count
 	mov  rdi, offset session
-	call parse_env
+	call find_env_var
 	mov  session_length, rcx
 
 	ret
 
-parse_env:
-	mov  rax, r15
-	xor  r8, r8
-	xor  r9, r9
-	xor  r13, r13
-	xor  rsi, rsi
+find_env_var:
+	mov rax, [rbp]
+	xor r15, r15
+	xor r8, r8
 
-env_loop:
-	mov r14, r8
-	add r14, r9
-	mov bl, [rax + r14]
-
-	cmp bl, [target + r9]
-	je  env_char_matched
-
-	xor rsi, rsi
-
-	test bl, bl
-	je   env_check_zero
-
-	xor r13, r13
-
-skip_env:
-	inc r8
+env_match_loop:
 	mov bl, [rax + r8]
 
-	test bl, bl
-	jne  skip_env
+	cmp bl, [target + r8]
+	je  env_char_matched
 
-	inc r13
-	inc r8
-	xor r9, r9
-	jmp env_loop
+	xor r8, r8
+	xor rsi, rsi
+	inc r15
+	mov rax, [rbp + r15 * 8]
+
+	test rax, rax
+	je   find_env_done
+
+	jmp env_match_loop
 
 env_char_matched:
-	inc r9
+	inc r8
+	cmp r8, rcx
+	jne env_match_loop
 
-	inc rsi
-	cmp rsi, rcx
-	jne env_loop
-
-	mov r14, r8
-	add r14, r9
-	add r14, rax
-	inc r14
-
-	mov  rsi, r14
+	mov  rsi, rax
+	add  rsi, r8
+	inc  rsi
 	call copy_null
-	ret
 
-env_check_zero:
-	cmp r13, 1
-	jne skip_env
+find_env_done:
 	ret

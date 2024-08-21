@@ -33,7 +33,8 @@
 .global _start
 
 _start:
-	mov  r15, [rsp + 24]
+	mov  rbp, rsp
+	add  rbp, 24
 	call parse_envs
 	call parse_release
 	call sysinfo
