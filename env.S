@@ -53,6 +53,9 @@ find_env_var:
 	xor r9, r9
 
 env_match_loop:
+	test rax, rax
+	je   find_env_var_done
+
 	mov bl, [rax + r9]
 	cmp bl, [rdx + r9]
 	je  env_char_matched
@@ -60,11 +63,6 @@ env_match_loop:
 
 	inc r8
 	mov rax, [rbp + r8 * 8]
-
-	test rax, rax
-	jne  env_match_loop
-
-	ret
 
 env_char_matched:
 	inc r9
@@ -76,4 +74,5 @@ env_char_matched:
 	inc  rsi
 	call copy_null
 
+find_env_var_done:
 	ret
