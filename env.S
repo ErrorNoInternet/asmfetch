@@ -18,34 +18,29 @@ env_session:    .ascii "XDG_SESSION_TYPE"
 .lcomm target, 65
 
 parse_envs:
-	mov  rcx, 4
-	mov  rsi, offset env_username
-	mov  rdi, offset target
-	call copy_count
+	mov  rsi, 4
+	mov  rdx, offset env_username
 	mov  rdi, offset username
 	call find_env_var
 	mov  username_length, rcx
+	xor  rcx, rcx
 
-	mov  rcx, 5
-	mov  rsi, offset env_shell
-	mov  rdi, offset target
-	call copy_count
+	mov  rsi, 5
+	mov  rdx, offset env_shell
 	mov  rdi, offset shell_path
 	call find_env_var
 	mov  shell_path_length, rcx
+	xor  rcx, rcx
 
-	mov  rcx, 19
-	mov  rsi, offset env_desktop
-	mov  rdi, offset target
-	call copy_count
+	mov  rsi, 19
+	mov  rdx, offset env_desktop
 	mov  rdi, offset desktop
 	call find_env_var
 	mov  desktop_length, rcx
+	xor  rcx, rcx
 
-	mov  rcx, 16
-	mov  rsi, offset env_session
-	mov  rdi, offset target
-	call copy_count
+	mov  rsi, 16
+	mov  rdx, offset env_session
 	mov  rdi, offset session
 	call find_env_var
 	mov  session_length, rcx
@@ -54,34 +49,31 @@ parse_envs:
 
 find_env_var:
 	mov rax, [rbp]
-	xor r15, r15
 	xor r8, r8
+	xor r9, r9
 
 env_match_loop:
-	mov bl, [rax + r8]
-
-	cmp bl, [target + r8]
+	mov bl, [rax + r9]
+	cmp bl, [rdx + r9]
 	je  env_char_matched
+	xor r9, r9
 
-	xor r8, r8
-	xor rsi, rsi
-	inc r15
-	mov rax, [rbp + r15 * 8]
+	inc r8
+	mov rax, [rbp + r8 * 8]
 
 	test rax, rax
-	je   find_env_done
+	jne  env_match_loop
 
-	jmp env_match_loop
+	ret
 
 env_char_matched:
-	inc r8
-	cmp r8, rcx
+	inc r9
+	cmp r9, rsi
 	jne env_match_loop
 
 	mov  rsi, rax
-	add  rsi, r8
+	add  rsi, r9
 	inc  rsi
 	call copy_null
 
-find_env_done:
 	ret
