@@ -33,7 +33,7 @@ print_storage:
 	mov  rcx, 6
 	call print
 
-	mov  rsi, offset cyan
+	mov  rsi, offset accent
 	mov  rcx, 5
 	call print
 
