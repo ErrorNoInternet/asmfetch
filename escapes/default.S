@@ -19,5 +19,8 @@ cyan:
 reset:
 	.ascii "\x1b[m\xf"
 
-accent:
+accent0:
 	.ascii "\x1b[36m"
+
+accent1:
+	.ascii "\x1b[34m"

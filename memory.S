@@ -5,7 +5,7 @@ print_memory:
 	mov  rcx, 6
 	call print
 
-	mov  rsi, offset blue
+	mov  rsi, offset accent1
 	mov  rcx, 5
 	call print
 
@@ -33,7 +33,7 @@ print_memory:
 	mov  rcx, 6
 	call print
 
-	mov  rsi, offset accent
+	mov  rsi, offset accent0
 	mov  rcx, 5
 	call print
 

@@ -16,7 +16,7 @@ print_uptime:
 	mov  rcx, 5
 	call print
 
-	mov  rsi, offset blue
+	mov  rsi, offset accent1
 	mov  rcx, 5
 	call print
 

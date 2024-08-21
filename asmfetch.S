@@ -5,7 +5,6 @@
 .include "atoi.S"
 .include "constants.S"
 .include "copy.S"
-.include "escapes.S"
 .include "itoa.S"
 .include "print.S"
 .include "symbols.S"
@@ -26,6 +25,7 @@
 .include "uptime.S"
 
 # customization
+.include "escapes/default.S"
 .include "kernel/without_machine.S"
 .include "logo/fedora.S"
 .include "shell/path.S"
