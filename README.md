@@ -1,7 +1,7 @@
 # asmfetch
 
 A fetch tool written in x86-64 assembly for Linux.
-Runs in under 220 microseconds and has zero dependencies.
+Runs in under 150 microseconds and has zero dependencies.
 
 There is almost no error handling and lots of things may break.
 Please report any bugs you find.
@@ -10,7 +10,7 @@ Please report any bugs you find.
 
 ## Usage
 
-```
+```shell
 $ gcc -nostdlib -no-pie asmfetch.S -o asmfetch
 $ ./asmfetch
 ```
