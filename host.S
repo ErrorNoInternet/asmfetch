@@ -1,10 +1,22 @@
+unknown_user_label: .ascii "nobody"
+
 print_host:
 	mov  rsi, offset yellow
 	mov  rcx, 5
 	call print
 
-	mov  rsi, offset username
 	mov  rcx, username_length
+	test rcx, rcx
+	je   print_unknown_user
+
+	mov rsi, offset username
+	jmp print_known_user
+
+print_unknown_user:
+	mov rsi, offset unknown_user_label
+	mov rcx, 6
+
+print_known_user:
 	call print
 
 	mov  rsi, offset red

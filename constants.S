@@ -7,8 +7,9 @@
 	SYS_WRITE               = 1
 	UTSNAME_SIZE            = 65
 
-	open_paren_label:       .ascii " ("
 	close_paren_label:      .ascii ")\n"
+	open_paren_label:       .ascii " ("
 	size_label_0:           .ascii " GiB / "
 	size_label_1:           .ascii " GiB ("
 	size_label_2:           .ascii ")\n"
+	unknown_label: .ascii "Unknown"
