@@ -1,7 +1,6 @@
 meminfo_file: .asciz "/proc/meminfo"
 
 .lcomm memavailable, 8
-
 .lcomm meminfo_buf, 128
 
 parse_meminfo:
