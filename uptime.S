@@ -37,12 +37,16 @@ print_uptime:
 uptime_hours:
 	mov  rax, hours
 	test rax, rax
-	jne  print_hours
+	jne  print_comma_hours
 
 uptime_minutes:
 	mov  rax, minutes
+
+	test r9, r9
+	je   print_minutes
+
 	test rax, rax
-	jne  print_minutes
+	jne  print_comma_minutes
 
 uptime_done:
 	mov  bl, '\n'
@@ -80,15 +84,15 @@ print_hour_label:
 	call print
 	jmp  uptime_minutes
 
-print_hours:
+print_comma_hours:
 	test r9, r9
-	je   print_hours_
+	je   print_hours
 
 	mov  rsi, offset comma_label
 	mov  rcx, 2
 	call print
 
-print_hours_:
+print_hours:
 	inc r9
 
 	mov  rdi, offset hours_str
@@ -113,15 +117,15 @@ print_minute_label:
 	call print
 	jmp  uptime_done
 
-print_minutes:
+print_comma_minutes:
 	test r9, r9
-	je   print_minutes_
+	je   print_minutes
 
 	mov  rsi, offset comma_label
 	mov  rcx, 2
 	call print
 
-print_minutes_:
+print_minutes:
 	mov  rdi, offset minutes_str
 	mov  rbx, 10
 	mov  r8, rax
