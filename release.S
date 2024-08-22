@@ -19,63 +19,31 @@ parse_release:
 	mov rdx, 511
 	syscall
 
-	mov  rax, offset os_release_buf
-	xor  r8, r8
-	xor  r9, r9
-	xor  r13, r13
-	xor  rsi, rsi
-	call var_loop
-	ret
+	mov rax, offset os_release_buf
+	xor r8, r8
 
-var_loop:
-	mov r14, r8
-	add r14, r9
-	mov bl, [rax + r14]
+var_match_loop:
+	mov bl, [rax]
+	inc rax
 
-	cmp bl, [var_pretty_name + r9]
+	test bl, bl
+	je   parse_release_done
+
+	cmp bl, [var_pretty_name + r8]
 	je  var_char_matched
+	xor r8, r8
 
-	xor rsi, rsi
-
-	cmp bl, '\n'
-	je  var_check_zero
-
-skip_var:
-	xor r13, r13
-	inc r9
-
-	mov r14, r8
-	add r14, r9
-	mov bl, [rax + r14]
-
-	cmp bl, '\n'
-	jne skip_var
-
-	inc r13
-	inc r8
-	add r8, r9
-	xor r9, r9
-	jmp var_loop
+	jmp var_match_loop
 
 var_char_matched:
-	inc r9
+	inc r8
+	cmp r8, 11
+	jne var_match_loop
 
-	inc rsi
-	cmp rsi, 11
-	jne var_loop
-
-	mov r14, r8
-	add r14, r9
-	add r14, rax
-	inc r14
-
-	mov  rsi, r14
+	mov  rsi, rax
 	mov  rdi, offset pretty_name
 	call copy_eol
 	mov  pretty_name_length, rcx
-	ret
 
-var_check_zero:
-	cmp r13, 1
-	jne skip_var
+parse_release_done:
 	ret

@@ -17,9 +17,19 @@ print_system:
 	mov  rcx, 8
 	call print
 
-	mov  rsi, offset pretty_name + 1
 	mov  rcx, pretty_name_length
-	sub  rcx, 2
+	test rcx, rcx
+	je   print_unknown_system
+
+	mov rsi, offset pretty_name + 2
+	sub rcx, 3
+	jmp print_known_system
+
+print_unknown_system:
+	mov rsi, offset unknown_label
+	mov rcx, 7
+
+print_known_system:
 	call println
 
 	ret
