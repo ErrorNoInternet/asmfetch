@@ -17,34 +17,37 @@ parse_meminfo:
 	mov rdx, 127
 	syscall
 
-	cmp rax, 1
-	jl  meminfo_ret
+	cmp rax, 127
+	je  meminfo_available
 
+	ret
+
+meminfo_available:
 	xor r8, r8
 	xor r9, r9
 	xor r11, r11
 
-meminfo_available:
+skip_lines:
 	mov bl, [meminfo_buf + r8]
 	inc r8
 
 	cmp bl, '\n'
-	jne meminfo_available
+	jne skip_lines
 
 	inc r9
 	cmp r9, 2
-	jne meminfo_available
+	jne skip_lines
 
 	add r8, 13
 
-meminfo_available_skip_space:
+skip_space:
 	mov bl, [meminfo_buf + r8]
 	inc r8
 
 	cmp bl, ' '
-	je  meminfo_available_skip_space
+	je  skip_space
 
-meminfo_available_parse:
+parse_memavailable:
 	mov [number_buf + r11], bl
 	inc r11
 
@@ -54,12 +57,11 @@ meminfo_available_parse:
 	cmp bl, ' '
 	je  meminfo_done
 
-	jmp meminfo_available_parse
+	jmp parse_memavailable
 
 meminfo_done:
 	mov  rsi, offset number_buf
 	call atoi
 	mov  memavailable, rax
 
-meminfo_ret:
 	ret
