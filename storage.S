@@ -18,6 +18,16 @@ print_storage:
 	call print
 
 	mov  rax, [statfs_buf + 16]
+	test rax, rax
+	jne  print_storage_numbers
+
+	mov  rsi, offset unknown_label
+	mov  rcx, 7
+	call println
+
+	ret
+
+print_storage_numbers:
 	sub  rax, [statfs_buf + 24]
 	mov  r8, rax
 	call print_storage_number
