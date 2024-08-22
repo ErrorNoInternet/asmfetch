@@ -63,6 +63,7 @@ env_match_loop:
 
 	inc r8
 	mov rax, [rbp + r8 * 8]
+	jmp env_match_loop
 
 env_char_matched:
 	inc r9
