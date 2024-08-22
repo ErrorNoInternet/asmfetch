@@ -17,6 +17,9 @@ parse_meminfo:
 	mov rdx, 127
 	syscall
 
+	cmp rax, 1
+	jl  meminfo_ret
+
 	xor r8, r8
 	xor r9, r9
 	xor r11, r11
@@ -24,6 +27,7 @@ parse_meminfo:
 meminfo_available:
 	mov bl, [meminfo_buf + r8]
 	inc r8
+
 	cmp bl, '\n'
 	jne meminfo_available
 
@@ -57,4 +61,5 @@ meminfo_done:
 	call atoi
 	mov  memavailable, rax
 
+meminfo_ret:
 	ret
