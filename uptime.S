@@ -1,10 +1,7 @@
 uptime_label:   .ascii "Uptime    "
 days_label:     .ascii " days"
-day_label:      .ascii " day"
 hours_label:    .ascii " hours"
-hour_label:     .ascii " hour"
 minutes_label:  .ascii " minutes"
-minute_label:   .ascii " minute"
 comma_label:    .ascii ", "
 
 .lcomm days_str, 10
@@ -40,7 +37,7 @@ uptime_hours:
 	jne  print_comma_hours
 
 uptime_minutes:
-	mov  rax, minutes
+	mov rax, minutes
 
 	test r9, r9
 	je   print_minutes
@@ -54,10 +51,8 @@ uptime_done:
 	ret
 
 print_day_label:
-	mov  rsi, offset day_label
-	mov  rcx, 4
-	call print
-	jmp  uptime_hours
+	mov rcx, 4
+	jmp print_days_label
 
 print_days:
 	inc r9
@@ -69,20 +64,18 @@ print_days:
 	add  rsi, offset days_str
 	call print
 
+	mov rsi, offset days_label
 	cmp r8, 1
 	je  print_day_label
+	mov rcx, 5
 
-	mov  rsi, offset days_label
-	mov  rcx, 5
+print_days_label:
 	call print
-
-	jmp uptime_hours
+	jmp  uptime_hours
 
 print_hour_label:
-	mov  rsi, offset hour_label
-	mov  rcx, 5
-	call print
-	jmp  uptime_minutes
+	mov rcx, 5
+	jmp print_hours_label
 
 print_comma_hours:
 	test r9, r9
@@ -102,20 +95,18 @@ print_hours:
 	add  rsi, offset hours_str
 	call print
 
+	mov rsi, offset hours_label
 	cmp r8, 1
 	je  print_hour_label
+	mov rcx, 6
 
-	mov  rsi, offset hours_label
-	mov  rcx, 6
+print_hours_label:
 	call print
-
-	jmp uptime_minutes
+	jmp  uptime_minutes
 
 print_minute_label:
-	mov  rsi, offset minute_label
-	mov  rcx, 7
-	call print
-	jmp  uptime_done
+	mov rcx, 7
+	jmp print_minutes_label
 
 print_comma_minutes:
 	test r9, r9
@@ -133,11 +124,11 @@ print_minutes:
 	add  rsi, offset minutes_str
 	call print
 
+	mov rsi, offset minutes_label
 	cmp r8, 1
 	je  print_minute_label
+	mov rcx, 8
 
-	mov  rsi, offset minutes_label
-	mov  rcx, 8
+print_minutes_label:
 	call print
-
-	jmp uptime_done
+	jmp  uptime_done
