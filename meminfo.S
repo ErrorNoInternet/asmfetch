@@ -26,16 +26,16 @@ meminfo_available:
 	xor r9, r9
 	xor r11, r11
 
-skip_lines:
+skip_line:
 	mov bl, [meminfo_buf + r8]
 	inc r8
 
 	cmp bl, '\n'
-	jne skip_lines
+	jne skip_line
 
 	inc r9
 	cmp r9, 2
-	jne skip_lines
+	jne skip_line
 
 	add r8, 13
 
