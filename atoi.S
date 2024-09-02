@@ -2,19 +2,18 @@ atoi:
 	xor rax, rax
 
 atoi_convert:
-	mov   bl, [rsi]
-	inc   rsi
-	movzx rdi, bl
+	mov dl, [rsi]
+	inc rsi
 
-	test rdi, rdi
+	test rdx, rdx
 	je   done
 
-	cmp rdi, '0'
+	cmp rdx, '0'
 	jl  error
 
-	sub  rdi, '0'
+	sub  rdx, '0'
 	imul rax, 10
-	add  rax, rdi
+	add  rax, rdx
 
 	jmp atoi_convert
 
