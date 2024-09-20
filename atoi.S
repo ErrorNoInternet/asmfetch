@@ -6,10 +6,10 @@ atoi_convert:
 	inc rsi
 
 	test rdx, rdx
-	je   done
+	je   atoi_done
 
 	cmp rdx, '0'
-	jl  error
+	jl  atoi_error
 
 	sub  rdx, '0'
 	imul rax, 10
@@ -17,8 +17,8 @@ atoi_convert:
 
 	jmp atoi_convert
 
-error:
+atoi_error:
 	mov rax, -1
 
-done:
+atoi_done:
 	ret
