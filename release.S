@@ -42,7 +42,8 @@ var_char_matched:
 
 	mov  rsi, rax
 	mov  rdi, offset pretty_name
-	call copy_eol
+	mov  r15, '\n'
+	call copy
 	mov  pretty_name_length, rcx
 
 parse_release_done:

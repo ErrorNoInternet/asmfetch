@@ -19,22 +19,22 @@ uname:
 
 	mov  rsi, offset utsname
 	mov  rdi, offset sysname
-	call copy_null
+	call copy
 	mov  sysname_length, rcx
 
 	mov  rsi, offset utsname + UTSNAME_SIZE
 	mov  rdi, offset hostname
-	call copy_null
+	call copy
 	mov  hostname_length, rcx
 
 	mov  rsi, offset utsname + UTSNAME_SIZE * 2
 	mov  rdi, offset release
-	call copy_null
+	call copy
 	mov  release_length, rcx
 
 	mov  rsi, offset utsname + UTSNAME_SIZE * 4
 	mov  rdi, offset machine
-	call copy_null
+	call copy
 	mov  machine_length, rcx
 
 	ret

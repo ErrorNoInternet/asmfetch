@@ -35,9 +35,9 @@ _start:
 	mov  rbp, rsp
 	add  rbp, 24
 	call parse_envs
+	call uname
 	call parse_release
 	call sysinfo
-	call uname
 	call parse_meminfo
 
 	mov  rsi, offset LOGO_0

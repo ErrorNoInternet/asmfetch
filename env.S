@@ -73,7 +73,7 @@ env_char_matched:
 	mov  rsi, rax
 	add  rsi, r9
 	inc  rsi
-	call copy_null
+	call copy
 
 find_env_var_done:
 	ret
