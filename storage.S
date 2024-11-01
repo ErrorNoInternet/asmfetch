@@ -1,6 +1,14 @@
 storage_label: .ascii "Storage   "
+statfs_path: .asciz "/"
+
+.lcomm statfs_buf, 128
 
 print_storage:
+	mov rax, SYS_STATFS
+	mov rdi, offset statfs_path
+	mov rsi, offset statfs_buf
+	syscall
+
 	mov  rsi, offset storage_symbol
 	mov  rcx, 6
 	call print

@@ -12,7 +12,6 @@
 .include "env.S"
 .include "meminfo.S"
 .include "release.S"
-.include "statfs.S"
 .include "sysinfo.S"
 .include "uname.S"
 
@@ -40,7 +39,6 @@ _start:
 	call sysinfo
 	call uname
 	call parse_meminfo
-	call statfs
 
 	mov  rsi, offset LOGO_0
 	mov  rcx, LOGO_1 - LOGO_0
