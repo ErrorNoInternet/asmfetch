@@ -30,8 +30,8 @@ print_colors:
 	mov  rsi, offset purple
 	call print_circle
 
-	mov  bl, 10
-	call printc
+	mov byte ptr [print_buf + r10], '\n'
+	inc r10
 
 	ret
 

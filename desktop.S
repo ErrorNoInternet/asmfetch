@@ -35,8 +35,8 @@ print_known_desktop:
 	test rax, rax
 	jne  check_session
 
-	mov  bl, '\n'
-	call printc
+	mov byte ptr [print_buf + r10], '\n'
+	inc r10
 
 	ret
 

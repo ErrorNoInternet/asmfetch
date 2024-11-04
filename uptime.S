@@ -46,8 +46,8 @@ uptime_minutes:
 	jne  print_comma_minutes
 
 uptime_done:
-	mov  bl, '\n'
-	call printc
+	mov byte ptr [print_buf + r10], '\n'
+	inc r10
 	ret
 
 print_day_label:

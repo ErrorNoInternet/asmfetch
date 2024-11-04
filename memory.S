@@ -49,8 +49,8 @@ print_memory:
 	add  rsi, offset number_buf
 	call print
 
-	mov  bl, '%'
-	call printc
+	mov byte ptr [print_buf + r10], '%'
+	inc r10
 
 	mov  rsi, offset reset
 	mov  rcx, 4
@@ -78,8 +78,8 @@ print_memory_number:
 	call print
 
 print_memory_decimal:
-	mov  bl, '.'
-	call printc
+	mov byte ptr [print_buf + r10], '.'
+	inc r10
 
 	mov  rcx, 2
 	call print
@@ -87,6 +87,6 @@ print_memory_decimal:
 	ret
 
 print_memory_zero:
-	mov  bl, '0'
-	call printc
-	jmp  print_memory_decimal
+	mov byte ptr [print_buf + r10], '0'
+	inc r10
+	jmp print_memory_decimal

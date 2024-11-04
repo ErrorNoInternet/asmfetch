@@ -27,11 +27,6 @@ println:
 
 	ret
 
-printc:
-	mov [print_buf + r10], bl
-	inc r10
-	ret
-
 flush:
 	mov rax, SYS_WRITE
 	mov rdi, 1

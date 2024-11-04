@@ -23,8 +23,8 @@ print_known_user:
 	mov  rcx, 5
 	call print
 
-	mov  bl, '@'
-	call printc
+	mov byte ptr [print_buf + r10], '@'
+	inc r10
 
 	mov  rsi, offset green
 	mov  rcx, 5
