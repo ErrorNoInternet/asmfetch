@@ -1,11 +1,11 @@
 .lcomm print_buf, 1024
 
 print:
-	mov bl, [rsi]
-	inc rsi
+	mov bl, [rsi] # Copying over array
+	inc rsi # Increment pointer
 
-	mov [print_buf + r10], bl
-	inc r10
+	mov [print_buf + r10], bl # Copy to offset
+	inc r10 # increment length
 
 	dec rcx
 	jnz print
@@ -34,5 +34,5 @@ flush:
 	mov rdx, r10
 	syscall
 
-	xor r10, r10
+	mov r10, 0x0 # Unsure why we would use XOR here, except if xor is more performant than mov
 	ret

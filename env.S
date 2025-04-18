@@ -1,7 +1,8 @@
-env_username:   .ascii "USER"
-env_shell:      .ascii "SHELL"
-env_desktop:    .ascii "XDG_CURRENT_DESKTOP"
-env_session:    .ascii "XDG_SESSION_TYPE"
+env_username:      .ascii "USERNAME"
+env_username_alt:  .ascii "USER"
+env_shell:         .ascii "SHELL"
+env_desktop:       .ascii "XDG_CURRENT_DESKTOP"
+env_session:       .ascii "XDG_SESSION_TYPE"
 
 .lcomm username, 65
 .lcomm username_length, 8
@@ -18,13 +19,26 @@ env_session:    .ascii "XDG_SESSION_TYPE"
 .lcomm target, 65
 
 parse_envs:
-	mov  rsi, 4
+	mov  rsi, 8
 	mov  rdx, offset env_username
 	mov  rdi, offset username
 	call find_env_var
 	mov  username_length, rcx
+
+	test rcx, rcx
+	jz username_found_first_try
 	xor  rcx, rcx
 
+	mov  rsi, 4
+	mov  rdx, offset env_username_alt
+	mov  rdi, offset username
+	call find_env_var
+	mov  username_length, rcx
+	xor  rcx, rcx
+	jmp continue
+	
+username_found_first_try:
+	xor  rcx, rcx
 	mov  rsi, 5
 	mov  rdx, offset env_shell
 	mov  rdi, offset shell_path
@@ -32,6 +46,7 @@ parse_envs:
 	mov  shell_path_length, rcx
 	xor  rcx, rcx
 
+continue:
 	mov  rsi, 19
 	mov  rdx, offset env_desktop
 	mov  rdi, offset desktop

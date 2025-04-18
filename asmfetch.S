@@ -33,7 +33,12 @@
 
 _start:
 	mov  rbp, rsp
-	add  rbp, 24
+	mov  r11, [rbp] # calculate env-var offset, makes finding faster and not broken when passing args!
+	mov  rax, 8
+	mul  r11
+	mov  r11, rax
+	add  r11, 16
+	add  rbp, r11
 	call parse_envs
 	call uname
 	call parse_release
