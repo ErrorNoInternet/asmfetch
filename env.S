@@ -26,7 +26,7 @@ parse_envs:
 	mov  username_length, rcx
 
 	test rcx, rcx
-	jz username_found_first_try
+	jnz username_found_first_try
 	xor  rcx, rcx
 
 	mov  rsi, 4
