@@ -35,7 +35,6 @@ parse_envs:
 	call find_env_var
 	mov  username_length, rcx
 	xor  rcx, rcx
-	jmp continue
 	
 username_found_first_try:
 	xor  rcx, rcx
@@ -88,6 +87,7 @@ env_char_matched:
 	mov  rsi, rax
 	add  rsi, r9
 	inc  rsi
+	xor r15, r15 # ensure r15 is zero
 	call copy
 
 find_env_var_done:

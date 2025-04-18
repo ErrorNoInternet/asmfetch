@@ -34,5 +34,5 @@ flush:
 	mov rdx, r10
 	syscall
 
-	mov r10, 0x0 # Unsure why we would use XOR here, except if xor is more performant than mov
+	xor r10, r10
 	ret
