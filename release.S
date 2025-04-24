@@ -19,28 +19,24 @@ parse_release:
 	mov rdx, 511
 	syscall
 
-	mov rax, offset os_release_buf
-	xor r8, r8
-
 var_match_loop:
-	mov bl, [rax]
-	inc rax
+	mov bl, [rsi]
+	inc rsi
 
 	test bl, bl
 	je   parse_release_done
 
-	cmp bl, [var_pretty_name + r8]
+	cmp bl, [var_pretty_name + r12]
 	je  var_char_matched
-	xor r8, r8
+	xor r12, r12
 
 	jmp var_match_loop
 
 var_char_matched:
-	inc r8
-	cmp r8, 11
+	inc r12
+	cmp r12, 11
 	jne var_match_loop
 
-	mov  rsi, rax
 	mov  rdi, offset pretty_name
 	mov  r15, '\n'
 	call copy
