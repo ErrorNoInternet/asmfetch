@@ -21,5 +21,5 @@ print_kernel:
 	mov  rcx, sysname_length
 	call print
 
-	mov byte ptr [print_buf + r10], ' '
+	mov byte ptr [r10], ' '
 	inc r10

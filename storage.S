@@ -67,7 +67,7 @@ print_storage_numbers:
 	add  rsi, offset number_buf
 	call print
 
-	mov byte ptr [print_buf + r10], '%'
+	mov byte ptr [r10], '%'
 	inc r10
 
 	mov  rsi, offset reset
@@ -97,7 +97,7 @@ print_storage_number:
 	call print
 
 print_storage_decimal:
-	mov byte ptr [print_buf + r10], '.'
+	mov byte ptr [r10], '.'
 	inc r10
 
 	mov  rcx, 2
@@ -106,6 +106,6 @@ print_storage_decimal:
 	ret
 
 print_storage_zero:
-	mov byte ptr [print_buf + r10], '0'
+	mov byte ptr [r10], '0'
 	inc r10
 	jmp print_storage_decimal

@@ -39,6 +39,7 @@ _start:
 	call parse_release
 	call sysinfo
 	call parse_meminfo
+	mov  r10, offset print_buf
 
 	mov  rsi, offset LOGO_0
 	mov  rcx, LOGO_1 - LOGO_0
@@ -88,7 +89,13 @@ _start:
 	mov  rsi, offset reset
 	mov  rcx, 4
 	call print
-	call flush
+
+	mov rax, SYS_WRITE
+	mov rdi, 1
+	mov rsi, offset print_buf
+	mov rdx, r10
+	sub rdx, rsi
+	syscall
 
 	mov rax, SYS_EXIT
 	xor rdi, rdi

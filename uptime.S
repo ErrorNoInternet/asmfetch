@@ -46,7 +46,7 @@ uptime_minutes:
 	jne  print_comma_minutes
 
 uptime_done:
-	mov byte ptr [print_buf + r10], '\n'
+	mov byte ptr [r10], '\n'
 	inc r10
 	ret
 
