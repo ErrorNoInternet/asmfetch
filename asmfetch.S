@@ -1,11 +1,16 @@
 .intel_syntax noprefix
 
-.include "atoi.S"
+.section .data
+
 .include "constants.S"
+.include "symbols.S"
+
+.section .text
+
+.include "atoi.S"
 .include "copy.S"
 .include "itoa.S"
 .include "print.S"
-.include "symbols.S"
 
 .include "env.S"
 .include "meminfo.S"
