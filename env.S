@@ -15,8 +15,6 @@ env_session:    .ascii "XDG_SESSION_TYPE="
 .lcomm session, 65
 .lcomm session_length, 8
 
-.lcomm target, 65
-
 parse_envs:
 	mov  rsi, 5
 	mov  rdx, offset env_username
