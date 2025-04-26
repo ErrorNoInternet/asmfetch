@@ -1,3 +1,5 @@
+.lcomm number_buf, 10
+
 itoa:
 	mov rsi, 10
 

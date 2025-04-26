@@ -1,7 +1,5 @@
 .intel_syntax noprefix
 
-.lcomm number_buf, 10
-
 .include "atoi.S"
 .include "constants.S"
 .include "copy.S"
