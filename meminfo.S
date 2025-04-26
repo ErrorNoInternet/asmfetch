@@ -26,17 +26,20 @@ meminfo_available:
 	mov r9, offset number_buf
 
 skip_line:
+	add rsi, 16
+
+skip_char:
 	mov bl, [rsi]
 	inc rsi
 
 	cmp bl, '\n'
-	jne skip_line
+	jne skip_char
 
 	inc r8
 	cmp r8, 2
-	jne skip_line
+	jl  skip_line
 
-	add rsi, 13
+	add rsi, 16
 
 skip_space:
 	mov bl, [rsi]
