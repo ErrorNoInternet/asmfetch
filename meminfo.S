@@ -13,10 +13,10 @@ parse_meminfo:
 	mov rdi, rax
 	mov rax, SYS_READ
 	mov rsi, offset meminfo_buf
-	mov rdx, 127
+	mov rdx, 128
 	syscall
 
-	cmp rax, 127
+	cmp rax, 128
 	je  meminfo_available
 
 	ret
