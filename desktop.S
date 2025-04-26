@@ -45,14 +45,18 @@ check_session:
 	mov  rcx, 2
 	call print
 
-	mov bl, [session]
-	cmp bl, 't'
-	je  print_session
+	mov ebx, [session]
+	cmp ebx, 0x797474
+	je  upper
 
-	sub bl, 32
+	sub bl, 0x20
+	jmp print_session
+
+upper:
+	sub ebx, 0x202020
 
 print_session:
-	mov  [session], bl
+	mov  [session], ebx
 	mov  rsi, offset session
 	mov  rcx, session_length
 	call print
