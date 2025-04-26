@@ -4,7 +4,7 @@ var_pretty_name: .ascii "PRETTY_NAME"
 .lcomm pretty_name, 65
 .lcomm pretty_name_length, 8
 
-.lcomm os_release_buf, 512
+.lcomm os_release_buf, 513
 
 parse_release:
 	mov rax, SYS_OPEN
@@ -16,7 +16,7 @@ parse_release:
 	mov rdi, rax
 	mov rax, SYS_READ
 	mov rsi, offset os_release_buf
-	mov rdx, 511
+	mov rdx, 512
 	syscall
 
 var_match_loop:
