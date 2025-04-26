@@ -22,9 +22,9 @@ parse_meminfo:
 	ret
 
 meminfo_available:
+	mov r13, offset number_buf
 	xor r8, r8
 	xor r9, r9
-	xor r11, r11
 
 skip_line:
 	mov bl, [meminfo_buf + r8]
@@ -47,8 +47,8 @@ skip_space:
 	je  skip_space
 
 parse_memavailable:
-	mov [number_buf + r11], bl
-	inc r11
+	mov [r13], bl
+	inc r13
 
 	mov bl, [meminfo_buf + r8]
 	inc r8
