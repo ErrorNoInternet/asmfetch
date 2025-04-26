@@ -1,26 +1,16 @@
 .lcomm print_buf, 1024
 
 print:
-	mov bl, [rsi]
-	inc rsi
-
-	mov [r10], bl
-	inc r10
-
-	dec rcx
-	jnz print
+	mov rdi, r10
+	rep movsb
+	mov r10, rdi
 
 	ret
 
 println:
-	mov bl, [rsi]
-	inc rsi
-
-	mov [r10], bl
-	inc r10
-
-	dec rcx
-	jnz println
+	mov rdi, r10
+	rep movsb
+	mov r10, rdi
 
 	mov byte ptr [r10], '\n'
 	inc r10
