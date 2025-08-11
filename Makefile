@@ -8,7 +8,7 @@ asmfetch: asmfetch.S
 
 install:
 	#TODO make this work on systems without sudo
-	cp asmfetch /usr/local/bin/asmfetch
+	@install -Dm755 asmfetch /usr/local/bin/
 
 
 .PHONY: compile_with_distro_logo install
