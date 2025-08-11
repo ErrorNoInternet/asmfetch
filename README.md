@@ -25,7 +25,7 @@ Runs in under 150 microseconds and has zero dependencies.
 
 ```sh
 make # replaces fedora logo with your distro's and compiles
-make install # copies asmfetch to /usr/local/bin
+sudo make install # copies asmfetch to /usr/local/bin
 asmfetch
 ```
 
