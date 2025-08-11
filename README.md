@@ -23,9 +23,10 @@ Runs in under 150 microseconds and has zero dependencies.
 
 ## Usage
 
-```shell
-$ gcc -nostdlib -no-pie asmfetch.S -o asmfetch
-$ ./asmfetch
+```sh
+make
+sudo make install
+asmfetch
 ```
 
 ## Customization
