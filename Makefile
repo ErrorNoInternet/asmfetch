@@ -11,4 +11,4 @@ install:
 	@install -Dm755 asmfetch /usr/local/bin/
 
 
-.PHONY: compile_with_distro_logo install
+.PHONY: all install
