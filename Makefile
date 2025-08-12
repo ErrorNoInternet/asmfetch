@@ -8,4 +8,4 @@ install: asmfetch
 	install -Dm755 asmfetch /usr/local/bin/
 
 
-.PHONY: all install
+.PHONY: install
