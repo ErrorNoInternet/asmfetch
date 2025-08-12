@@ -6,9 +6,9 @@ asmfetch: asmfetch.S
 	@sed -E 's|(\.include "logo/).*(\.S")|\1'"${DISTRO_ID}"'\2|' asmfetch.S |\
 	gcc -nostdlib -no-pie -x assembler - -o $@
 
-install:
 	#TODO make this work on systems without sudo
 	@install -Dm755 asmfetch /usr/local/bin/
+install: asmfetch
 
 
 .PHONY: all install
