@@ -11,9 +11,9 @@ Runs in under 150 microseconds and has zero dependencies.
 - hostname
 - os name from `/etc/os-release`
 - kernel
-  - name
-  - version
-  - architecture
+    - name
+    - version
+    - architecture
 - shell (`$SHELL`)
 - uptime
 - desktop (`$XDG_CURRENT_DESKTOP`)
@@ -24,8 +24,8 @@ Runs in under 150 microseconds and has zero dependencies.
 ## Usage
 
 ```sh
-make # replaces fedora logo with your distro's and compiles
-sudo make install # copies asmfetch to /usr/local/bin
+make
+sudo make install
 asmfetch
 ```
 
